@@ -1,0 +1,5 @@
+Connected to pydev debugger (build 251.26094.141)
+x shape: torch.Size([64, 2, 1024])
+y shape: torch.Size([64])
+y sample: tensor([ 45., 125., 125.,  15.,  80.])
+Train batches: 259
