@@ -1,7 +1,7 @@
 
 from torch.utils.data import DataLoader
 from pathlib import Path
-from data_parse.scintillator_dataset import ScintillatorDataset
+from scintillator_dataset import ScintillatorDataset
 
 def make_dataloaders(split_dir: str | Path, batch_size: int = 64, num_workers: int = 0):
     split_dir = Path(split_dir)
@@ -29,6 +29,8 @@ def make_dataloaders(split_dir: str | Path, batch_size: int = 64, num_workers: i
 """
 
 if __name__ == "__main__":
+    # import os
+    # print(os.getcwd())# 看PyCharm认为的工作目录在哪
     train_loader, val_loader, test_loader = make_dataloaders('../dataset/split')
 
     # 取一个batch看形状
