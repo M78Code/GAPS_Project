@@ -5,11 +5,22 @@ import sys
 
 from torch.optim import Adam
 
-sys.path.append(str(Path(__file__).parent))
+sys.path.append(str(Path(__file__).parent.parent))
+"""
+  第8行改成：
+
+  sys.path.append(str(Path(__file__).parent.parent.parent.parent))
+
+  层级关系：
+  train.py        → .parent      = scripts/
+                  → .parent ×2   = src/
+                  → .parent ×3   = Scintillator_Project/
+                  → .parent ×4   = GAPS_Project/   ← 这一层加进去
+"""
 
 
-from ..data_parse.data_loader import make_dataloaders
-from ..models.cnn1d import  CNN1D
+from data_parse.data_loader import make_dataloaders
+from models.cnn1d import  CNN1D
 
 # 设备
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -65,7 +76,7 @@ def train():
                 y = y.to(device).unsqueeze(1)
                 pred = model(x)
                 loss = criterion(pred, y)
-                
+
                 val_loss += loss.item() * len(x)
 
         val_loss /= len(val_loader.dataset)

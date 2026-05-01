@@ -1,14 +1,5 @@
-/opt/homebrew/anaconda3/bin/python /Users/lind/Desktop/ppt/GAPS_Project/Scintillator_Project/src/data_parse/data_loader.py 
+(gaps) root@1e45c81b8399:/workspace/GAPS_Project# python Scintillator_Project/src/scripts/train.py
 Traceback (most recent call last):
-  File "/Users/lind/Desktop/ppt/GAPS_Project/Scintillator_Project/src/data_parse/data_loader.py", line 32, in <module>
-    train_loader, val_loader, test_loader = make_dataloaders('~/Desktop/ppt/GAPS_Project/Scintillator_Project/dataset/split')
-                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/lind/Desktop/ppt/GAPS_Project/Scintillator_Project/src/data_parse/data_loader.py", line 9, in make_dataloaders
-    train_ds = ScintillatorDataset(split_dir / "train.json")
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/lind/Desktop/ppt/GAPS_Project/Scintillator_Project/src/data_parse/scintillator_dataset.py", line 23, in __init__
-    with open(json_path, "r", encoding="utf-8") as f:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: '~/Desktop/ppt/GAPS_Project/Scintillator_Project/dataset/split/train.json'
-
-Process finished with exit code 1
+  File "/workspace/GAPS_Project/Scintillator_Project/src/scripts/train.py", line 11, in <module>
+    from Scintillator_Project.src.data_parse.data_loader import make_dataloaders
+ModuleNotFoundError: No module named 'Scintillator_Project'
