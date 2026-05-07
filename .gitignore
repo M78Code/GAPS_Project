@@ -225,7 +225,10 @@ dataset/
 FRDR_dataset_538_download_734_202602100732
 Claude_Code_提示词模板.md
 Scintillator_Project/dataset
-
+PlotNeuralNet
+docs
+logs
+wandb
 
 # EqNIO
 EqNIO-main/

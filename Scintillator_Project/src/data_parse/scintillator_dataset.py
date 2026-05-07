@@ -13,7 +13,7 @@ class ScintillatorDataset(Dataset):
     标签：position (cm)
     """
 
-    def __init__(self, json_path: str | Path, normalize: bool = True):
+    def __init__(self, json_path: str | Path, normalize: bool = True, roi: tuple | None = (450, 800)):
         """
         :param json_path: train.json / val.json / test.json 的路径
         :param normalize: 是否对波形做归一化（除以通道最大绝对值）
@@ -32,7 +32,7 @@ class ScintillatorDataset(Dataset):
         X = waveforms
         y = labels
         """
-        self.waveforms = []     # list of ndarray [2, 1024]
+        self.waveforms = []     # list of ndarray [2, 350]（ROI截取后）or [2, 1024]（roi=None时）
         self.labels = []        # 保存标签，list of float
 
         """
@@ -54,16 +54,15 @@ class ScintillatorDataset(Dataset):
             """
             waveform = np.stack([ch0, ch1], axis=0) # (2, 1024) 把两个通道合并成一个二维数组
 
+            # Step15: ROI固定窗口截取
+            if roi is not None:
+                waveform = waveform[:, roi[0]:roi[1]] # (2, 350)
+
             if normalize:
-                # 每个通道独立归一化：除以该通道最大绝对值
-                for i in range(2):
-                    max_abs = np.max(np.abs(waveform[i])) # 计算当前通道的最大绝对值
-                    if max_abs > 1e-9: # 防止除以 0，如果通道全是0， max_abs = 0
-                        """
-                        把当前通道除以自己的最大绝对值，作用是把波形绽放到大约[-1~1]
-                        这里是每个通道独立归一化,CH0 用 CH0 自己的最大值，CH1 用 CH1 自己的最大值
-                        """
-                        waveform[i] /= max_abs
+                # 两通道联合归一化：除以两通道共同的最大绝对值，保留CH0/CH1幅度比例（R₀信息）
+                max_abs = np.max(np.abs(waveform))
+                if max_abs > 1e-9:
+                    waveform /= max_abs
             """
             把这一条 event 的双通道波形保存起来
             每个 waveform 形状是(2, 1024)
@@ -78,14 +77,14 @@ class ScintillatorDataset(Dataset):
         eg: val.json有3533条event，那么理论上是(3533, 2, 1024)
         把所有标签转成 NumPy 数组,形状是(N,)
         """
-        self.waveforms = np.array(self.waveforms, dtype=np.float32) # (N, 2, 1024)
+        self.waveforms = np.array(self.waveforms, dtype=np.float32) # (N, 2, 350) ROI模式 / (N, 2, 1024) 全段模式
         self.labels = np.array(self.labels, dtype=np.float32)       # (N,)
 
     def __len__(self):
         return len(self.labels)
 
     def __getitem__(self, idx):
-        x = torch.from_numpy(self.waveforms[idx])   # (2, 1024)
+        x = torch.from_numpy(self.waveforms[idx])   # (2, 350) ROI模式 / (2, 1024) 全段模式
         y = torch.tensor(self.labels[idx]) # scalar
         return x, y
 

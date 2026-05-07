@@ -1,7 +1,7 @@
 
 from torch.utils.data import DataLoader
 from pathlib import Path
-from data_parse.scintillator_dataset import ScintillatorDataset
+from Scintillator_Project.src.data_parse.scintillator_dataset import ScintillatorDataset
 
 def make_dataloaders(split_dir: str | Path, batch_size: int = 64, num_workers: int = 0):
     split_dir = Path(split_dir)

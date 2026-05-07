@@ -1,0 +1,21 @@
+===== Test Set 评估结果 =====
+MAE: 2.3458 cm
+RMSE: 4.8653 cm
+R²:   0.9877
+
+===== 各位置误差 =====
+    15 cm | RMSE: 5.1680 cm | N: 904
+    25 cm | RMSE: 7.2662 cm | N: 38
+    35 cm | RMSE: 7.8944 cm | N: 39
+    45 cm | RMSE: 3.3077 cm | N: 677
+    55 cm | RMSE: 5.8112 cm | N: 46
+    65 cm | RMSE: 5.8124 cm | N: 34
+    75 cm | RMSE: 6.7193 cm | N: 49
+    80 cm | RMSE: 4.2486 cm | N: 575
+    85 cm | RMSE: 5.8295 cm | N: 44
+    95 cm | RMSE: 6.1516 cm | N: 81
+   105 cm | RMSE: 5.9027 cm | N: 59
+   115 cm | RMSE: 5.2521 cm | N: 71
+   125 cm | RMSE: 4.5839 cm | N: 722
+   135 cm | RMSE: 11.3479 cm | N: 37
+   140 cm | RMSE: 4.9342 cm | N: 179
