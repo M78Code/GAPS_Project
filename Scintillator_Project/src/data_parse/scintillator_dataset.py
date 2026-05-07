@@ -13,7 +13,7 @@ class ScintillatorDataset(Dataset):
     标签：position (cm)
     """
 
-    def __init__(self, json_path: str | Path, normalize: bool = True, roi: tuple | None = (450, 800)):
+    def __init__(self, json_path: str | Path, normalize: bool = True, roi: tuple | None = (450, 800), augment: bool = False):
         """
         :param json_path: train.json / val.json / test.json 的路径
         :param normalize: 是否对波形做归一化（除以通道最大绝对值）
@@ -69,6 +69,27 @@ class ScintillatorDataset(Dataset):
             """
             self.waveforms.append(waveform)
             self.labels.append(float(ev['position_label'])) # 把这个 event 的位置标签保存起来
+
+        # --- 数据增强：对稀疏位置过采样（仅augment=True时生效）START ---
+        if augment:
+            SPARSE_THRESHOLD = 50
+            TARGET_COUNT = 200
+            NOISE_STD = 0.001
+
+            labels_arr = np.array(self.labels)
+            positions = np.unique(labels_arr)
+
+            for pos in positions:
+                idx = np.where(labels_arr == pos)[0]
+                n = len(idx)
+                if n < SPARSE_THRESHOLD:
+                    n_to_add = TARGET_COUNT - n
+                    for _ in range(n_to_add):
+                        src = self.waveforms[np.random.choice(idx)]
+                        noise = np.random.normal(0, NOISE_STD, src.shape).astype(np.float32)
+                        self.waveforms.append(src + noise)
+                        self.labels.append(pos)
+        # --- 数据增强：对稀疏位置过采样（仅augment=True时生效）END ---
 
         """
         这个就是模型要预测的目标

@@ -6,7 +6,7 @@ from Scintillator_Project.src.data_parse.scintillator_dataset import Scintillato
 def make_dataloaders(split_dir: str | Path, batch_size: int = 64, num_workers: int = 0):
     split_dir = Path(split_dir)
 
-    train_ds = ScintillatorDataset(split_dir / "train.json")
+    train_ds = ScintillatorDataset(split_dir / "train.json", augment=True)
     val_ds = ScintillatorDataset(split_dir / "val.json")
     test_ds = ScintillatorDataset(split_dir / "test.json")
 
