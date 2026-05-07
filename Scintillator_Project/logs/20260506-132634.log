@@ -1,0 +1,108 @@
+使用设备：mps
+EPOCHS=100 | BATCH_SIZE=64 | LR=0.0003 | scheduler=StepLR(step=20, gamma=0.7)
+
+Epoch   1/100 | train_loss: 3432.0022 | val_loss: 361.6801 | lr: 0.000300 ← 保存
+Epoch   2/100 | train_loss: 229.6950 | val_loss: 739.2111 | lr: 0.000300
+Epoch   3/100 | train_loss: 170.7220 | val_loss: 121.0299 | lr: 0.000300 ← 保存
+Epoch   4/100 | train_loss: 121.0627 | val_loss: 1033.4295 | lr: 0.000300
+Epoch   5/100 | train_loss: 112.5505 | val_loss: 153.9371 | lr: 0.000300
+Epoch   6/100 | train_loss: 98.4941 | val_loss: 488.5430 | lr: 0.000300
+Epoch   7/100 | train_loss: 80.8218 | val_loss: 98.2748 | lr: 0.000300 ← 保存
+Epoch   8/100 | train_loss: 72.4565 | val_loss: 129.9493 | lr: 0.000300
+Epoch   9/100 | train_loss: 75.6492 | val_loss: 131.3460 | lr: 0.000300
+Epoch  10/100 | train_loss: 65.9585 | val_loss: 50.4380 | lr: 0.000300 ← 保存
+Epoch  11/100 | train_loss: 56.8569 | val_loss: 49.9224 | lr: 0.000300 ← 保存
+Epoch  12/100 | train_loss: 60.3522 | val_loss: 68.2353 | lr: 0.000300
+Epoch  13/100 | train_loss: 57.0284 | val_loss: 64.2913 | lr: 0.000300
+Epoch  14/100 | train_loss: 58.5131 | val_loss: 45.2913 | lr: 0.000300 ← 保存
+Epoch  15/100 | train_loss: 53.5382 | val_loss: 38.7387 | lr: 0.000300 ← 保存
+Epoch  16/100 | train_loss: 47.6233 | val_loss: 50.2611 | lr: 0.000300
+Epoch  17/100 | train_loss: 49.3876 | val_loss: 69.1077 | lr: 0.000300
+Epoch  18/100 | train_loss: 46.8956 | val_loss: 70.0263 | lr: 0.000300
+Epoch  19/100 | train_loss: 44.8247 | val_loss: 49.4321 | lr: 0.000300
+Epoch  20/100 | train_loss: 47.3263 | val_loss: 83.7580 | lr: 0.000210
+Epoch  21/100 | train_loss: 45.4455 | val_loss: 42.9196 | lr: 0.000210
+Epoch  22/100 | train_loss: 38.1891 | val_loss: 35.0116 | lr: 0.000210 ← 保存
+Epoch  23/100 | train_loss: 42.2406 | val_loss: 226.9798 | lr: 0.000210
+Epoch  24/100 | train_loss: 46.5734 | val_loss: 35.0290 | lr: 0.000210
+Epoch  25/100 | train_loss: 40.4781 | val_loss: 236.7926 | lr: 0.000210
+Epoch  26/100 | train_loss: 48.2133 | val_loss: 136.0640 | lr: 0.000210
+Epoch  27/100 | train_loss: 38.0182 | val_loss: 38.3930 | lr: 0.000210
+Epoch  28/100 | train_loss: 40.1764 | val_loss: 36.4017 | lr: 0.000210
+Epoch  29/100 | train_loss: 35.4621 | val_loss: 76.5686 | lr: 0.000210
+Epoch  30/100 | train_loss: 44.6406 | val_loss: 38.9091 | lr: 0.000210
+Epoch  31/100 | train_loss: 34.9702 | val_loss: 34.1590 | lr: 0.000210 ← 保存
+Epoch  32/100 | train_loss: 34.4669 | val_loss: 39.1444 | lr: 0.000210
+Epoch  33/100 | train_loss: 36.9793 | val_loss: 45.0862 | lr: 0.000210
+Epoch  34/100 | train_loss: 34.6279 | val_loss: 72.2160 | lr: 0.000210
+Epoch  35/100 | train_loss: 33.3745 | val_loss: 52.9570 | lr: 0.000210
+Epoch  36/100 | train_loss: 38.0173 | val_loss: 35.0209 | lr: 0.000210
+Epoch  37/100 | train_loss: 36.2226 | val_loss: 38.4043 | lr: 0.000210
+Epoch  38/100 | train_loss: 35.6930 | val_loss: 37.3008 | lr: 0.000210
+Epoch  39/100 | train_loss: 33.5069 | val_loss: 38.5924 | lr: 0.000210
+Epoch  40/100 | train_loss: 32.5175 | val_loss: 58.0247 | lr: 0.000147
+Epoch  41/100 | train_loss: 31.3984 | val_loss: 36.0066 | lr: 0.000147
+Epoch  42/100 | train_loss: 33.0180 | val_loss: 32.3847 | lr: 0.000147 ← 保存
+Epoch  43/100 | train_loss: 30.4596 | val_loss: 36.4798 | lr: 0.000147
+Epoch  44/100 | train_loss: 31.0440 | val_loss: 33.6992 | lr: 0.000147
+Epoch  45/100 | train_loss: 29.5411 | val_loss: 36.3622 | lr: 0.000147
+Epoch  46/100 | train_loss: 30.5260 | val_loss: 31.9925 | lr: 0.000147 ← 保存
+Epoch  47/100 | train_loss: 28.9053 | val_loss: 45.4518 | lr: 0.000147
+Epoch  48/100 | train_loss: 33.3805 | val_loss: 237.7001 | lr: 0.000147
+Epoch  49/100 | train_loss: 40.8510 | val_loss: 32.9654 | lr: 0.000147
+Epoch  50/100 | train_loss: 30.9564 | val_loss: 32.0338 | lr: 0.000147
+Epoch  51/100 | train_loss: 29.6510 | val_loss: 37.6750 | lr: 0.000147
+Epoch  52/100 | train_loss: 30.2218 | val_loss: 103.4061 | lr: 0.000147
+Epoch  53/100 | train_loss: 33.3995 | val_loss: 33.2943 | lr: 0.000147
+Epoch  54/100 | train_loss: 31.8269 | val_loss: 31.8261 | lr: 0.000147 ← 保存
+Epoch  55/100 | train_loss: 28.8576 | val_loss: 31.9120 | lr: 0.000147
+Epoch  56/100 | train_loss: 29.9609 | val_loss: 37.8076 | lr: 0.000147
+Epoch  57/100 | train_loss: 29.7969 | val_loss: 45.9206 | lr: 0.000147
+Epoch  58/100 | train_loss: 29.9247 | val_loss: 35.0810 | lr: 0.000147
+Epoch  59/100 | train_loss: 28.4508 | val_loss: 34.5121 | lr: 0.000147
+Epoch  60/100 | train_loss: 27.5084 | val_loss: 37.0691 | lr: 0.000103
+Epoch  61/100 | train_loss: 28.1459 | val_loss: 33.3276 | lr: 0.000103
+Epoch  62/100 | train_loss: 28.2515 | val_loss: 34.9278 | lr: 0.000103
+Epoch  63/100 | train_loss: 29.1266 | val_loss: 37.9277 | lr: 0.000103
+Epoch  64/100 | train_loss: 29.7178 | val_loss: 36.3271 | lr: 0.000103
+Epoch  65/100 | train_loss: 28.7745 | val_loss: 31.0887 | lr: 0.000103 ← 保存
+Epoch  66/100 | train_loss: 27.5378 | val_loss: 32.2833 | lr: 0.000103
+Epoch  67/100 | train_loss: 28.7808 | val_loss: 32.2746 | lr: 0.000103
+Epoch  68/100 | train_loss: 28.1029 | val_loss: 247.7799 | lr: 0.000103
+Epoch  69/100 | train_loss: 29.2407 | val_loss: 32.4609 | lr: 0.000103
+Epoch  70/100 | train_loss: 27.8208 | val_loss: 38.0463 | lr: 0.000103
+Epoch  71/100 | train_loss: 27.7527 | val_loss: 32.3677 | lr: 0.000103
+Epoch  72/100 | train_loss: 27.3997 | val_loss: 31.6962 | lr: 0.000103
+Epoch  73/100 | train_loss: 28.0394 | val_loss: 34.3459 | lr: 0.000103
+Epoch  74/100 | train_loss: 30.8949 | val_loss: 87.3976 | lr: 0.000103
+Epoch  75/100 | train_loss: 29.3883 | val_loss: 35.6512 | lr: 0.000103
+Epoch  76/100 | train_loss: 27.5072 | val_loss: 31.9607 | lr: 0.000103
+Epoch  77/100 | train_loss: 26.7786 | val_loss: 36.5008 | lr: 0.000103
+Epoch  78/100 | train_loss: 27.2657 | val_loss: 65.6301 | lr: 0.000103
+Epoch  79/100 | train_loss: 29.3028 | val_loss: 31.8306 | lr: 0.000103
+Epoch  80/100 | train_loss: 27.1508 | val_loss: 36.8841 | lr: 0.000072
+Epoch  81/100 | train_loss: 26.7702 | val_loss: 31.2057 | lr: 0.000072
+Epoch  82/100 | train_loss: 26.3529 | val_loss: 36.9002 | lr: 0.000072
+Epoch  83/100 | train_loss: 25.9069 | val_loss: 46.5044 | lr: 0.000072
+Epoch  84/100 | train_loss: 27.0501 | val_loss: 33.4067 | lr: 0.000072
+Epoch  85/100 | train_loss: 26.6496 | val_loss: 34.2261 | lr: 0.000072
+Epoch  86/100 | train_loss: 26.1986 | val_loss: 31.4155 | lr: 0.000072
+Epoch  87/100 | train_loss: 26.7906 | val_loss: 31.2661 | lr: 0.000072
+Epoch  88/100 | train_loss: 26.4221 | val_loss: 32.5984 | lr: 0.000072
+Epoch  89/100 | train_loss: 26.0349 | val_loss: 33.0810 | lr: 0.000072
+Epoch  90/100 | train_loss: 26.6631 | val_loss: 30.6393 | lr: 0.000072 ← 保存
+Epoch  91/100 | train_loss: 26.0714 | val_loss: 46.0276 | lr: 0.000072
+Epoch  92/100 | train_loss: 27.4963 | val_loss: 33.4549 | lr: 0.000072
+Epoch  93/100 | train_loss: 25.9494 | val_loss: 32.7173 | lr: 0.000072
+Epoch  94/100 | train_loss: 25.5453 | val_loss: 33.0076 | lr: 0.000072
+Epoch  95/100 | train_loss: 25.8463 | val_loss: 31.6096 | lr: 0.000072
+Epoch  96/100 | train_loss: 25.4296 | val_loss: 35.4582 | lr: 0.000072
+Epoch  97/100 | train_loss: 26.2376 | val_loss: 43.8245 | lr: 0.000072
+Epoch  98/100 | train_loss: 27.8425 | val_loss: 40.0744 | lr: 0.000072
+Epoch  99/100 | train_loss: 25.9996 | val_loss: 33.6889 | lr: 0.000072
+Epoch 100/100 | train_loss: 25.8223 | val_loss: 35.4045 | lr: 0.000050
+
+训练完成。最优 val_loss: 30.6393
+最优 RMSE: 5.5353 cm
+模型保存于: /Users/lind/Desktop/ppt/GAPS_Project/Scintillator_Project/results/20260506-132634_best_model.pth
+日志保存于: /Users/lind/Desktop/ppt/GAPS_Project/Scintillator_Project/logs/20260506-132634.log

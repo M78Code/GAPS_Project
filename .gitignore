@@ -229,6 +229,7 @@ PlotNeuralNet
 docs
 logs
 wandb
+Scintillator_Project/runs
 
 # EqNIO
 EqNIO-main/
