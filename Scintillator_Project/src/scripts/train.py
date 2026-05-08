@@ -68,7 +68,8 @@ def train():
         criterion = nn.MSELoss()
         optimizer = Adam(model.parameters(), lr = LEARNING_RATE)
         # 每STEP_SIZE个epoch将学习率乘以0.7，避免过早停止学习
-        scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=STEP_SIZE, gamma=0.7)
+        # scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=STEP_SIZE, gamma=0.7)
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=EPOCHS, eta_min=1e-6)
 
         # ── 保存路径・TensorBoard ──────────────
         save_path = PROJECT_ROOT / 'results' / f'{timestamp}_best_model.pth'
