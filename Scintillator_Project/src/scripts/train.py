@@ -3,6 +3,7 @@ import torch.nn as nn
 from pathlib import Path
 from datetime import datetime
 from torch.optim import Adam
+import numpy as np
 from torch.utils.tensorboard import SummaryWriter
 
 import Scintillator_Project
@@ -53,6 +54,12 @@ def train():
         split_dir = PROJECT_ROOT / 'dataset' / 'split'
         train_loader, val_loader, _ = make_dataloaders(split_dir, batch_size=BATCH_SIZE)
 
+        # 计算位置权重（稀疏位置权重更高）
+        train_labels = train_loader.dataset.labels # numpy array of all train positions
+        positions, counts = np.unique(train_labels, return_counts=True)
+        max_count = float(counts.max())
+        weight_map = {float(pos): max_count / float(cnt) for pos, cnt in zip(positions, counts)}
+
         # 模型
         model = CNN1D().to(device)
 
@@ -79,7 +86,9 @@ def train():
 
                 optimizer.zero_grad()
                 pred = model(x)
-                loss = criterion(pred, y)
+                w = torch.tensor([weight_map[float(yi)] for yi in y.squeeze().tolist()], dtype=torch.float32, device=device)
+                loss = (w * (pred.squeeze(1) - y.squeeze(1)) ** 2).mean()
+                # loss = criterion(pred, y)
                 loss.backward()
                 optimizer.step()
 
