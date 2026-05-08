@@ -25,7 +25,7 @@ print(f'使用设备：{DEVICE}')
 BATCH_SIZE = 64
 
 
-def evaluate(enabledBestModel:bool = False):
+def evaluate():
     # ── 1. 加载测试数据 ──────────────────────────────
     split_dir = PROJECT_ROOT / 'dataset' / 'split'      # 数据集划分目录（train/val/test）
     _, _, test_loader = make_dataloaders(split_dir, batch_size=BATCH_SIZE)  # 只取 test_loader
@@ -34,15 +34,20 @@ def evaluate(enabledBestModel:bool = False):
     model = CNN1D().to(DEVICE)  # 创建模型并放到 GPU/CPU
     # 自动找 results/ 下时间戳最新的 best_model.pth（只匹配数字时间戳格式），找不到则用旧模型
     import re
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--best', action='store_true', help='load best model result 4.78cm')
+    args = parser.parse_args()
+
     candidates = sorted(
         [p for p in (PROJECT_ROOT / 'results').glob('*_best_model.pth')
          if re.match(r'^\d{8}-\d{6}_best_model\.pth$', p.name)]
     )
 
-    if enabledBestModel:
+    if args.best:
         model_path = PROJECT_ROOT / 'results' / '20260506-142427_best_model.pth'
     else:
-        model_path = candidates[-1]
+        model_path = candidates[-1] if candidates else PROJECT_ROOT / 'results' / 'best_model.pth'
 
     print(f'加载模型：{model_path.name}')
     model.load_state_dict(torch.load(model_path, map_location=DEVICE))
