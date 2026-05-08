@@ -25,7 +25,7 @@ print(f'使用设备：{DEVICE}')
 BATCH_SIZE = 64
 
 
-def evaluate():
+def evaluate(enabledBestModel:bool = False):
     # ── 1. 加载测试数据 ──────────────────────────────
     split_dir = PROJECT_ROOT / 'dataset' / 'split'      # 数据集划分目录（train/val/test）
     _, _, test_loader = make_dataloaders(split_dir, batch_size=BATCH_SIZE)  # 只取 test_loader
@@ -38,10 +38,12 @@ def evaluate():
         [p for p in (PROJECT_ROOT / 'results').glob('*_best_model.pth')
          if re.match(r'^\d{8}-\d{6}_best_model\.pth$', p.name)]
     )
-    if candidates:
-        model_path = candidates[-1]
+
+    if enabledBestModel:
+        model_path = PROJECT_ROOT / 'results' / '20260506-142427_best_model.pth'
     else:
-        model_path = PROJECT_ROOT / 'results' / 'best_model.pth'
+        model_path = candidates[-1]
+
     print(f'加载模型：{model_path.name}')
     model.load_state_dict(torch.load(model_path, map_location=DEVICE))
     # 加载模型参数（map_location 保证 GPU/CPU 兼容）
